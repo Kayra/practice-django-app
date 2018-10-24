@@ -2,7 +2,9 @@
 
 This is the code written while following the [official Django tutorial](https://docs.djangoproject.com/en/2.1/intro/tutorial01/).
 
-## Mac installation instructions
+## Set up
+
+### Mac installation instructions
 
 ```bash
 # Install homebrew 
@@ -20,4 +22,14 @@ source venv/bin/activate
 
 # Install the Python dependencies
 pip install -r requirements.txt
+```
+
+### Running the local development server
+
+```bash
+# Source the virtual environment
+source venv/bin/activate
+
+# Run the local development server
+python mysite/manage.py runserver
 ```
