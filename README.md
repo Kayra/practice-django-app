@@ -33,3 +33,14 @@ source venv/bin/activate
 # Run the local development server
 python mysite/manage.py runserver
 ```
+
+The application can now be accessed at [http://127.0.0.1:8000/](http://127.0.0.1:8000/polls/34/vote/)
+
+### Creating an admin account
+
+```bash
+# Create a super user
+python mysite/manage.py createsuperuser
+```
+
+You can now use the credentials you entered to visit the [admin panel.](http://127.0.0.1:8000/admin)
