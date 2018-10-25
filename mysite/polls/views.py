@@ -19,7 +19,7 @@ def detail(request, question_id):
 
     polls_detail_template = 'polls/detail.html'
     template_context = {
-        'question': get_object_or_404(Question, question_id)
+        'question': get_object_or_404(Question, pk=question_id)
     }
 
     return render(request, polls_detail_template, template_context)
