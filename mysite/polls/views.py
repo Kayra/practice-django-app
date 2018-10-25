@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 
+from mysite.polls.models import Question, Choice
 
 def index(request):
     return HttpResponse("Hello world. You are at the polls index.")
