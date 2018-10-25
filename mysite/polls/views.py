@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.template import loader
+from django.shortcuts import render
 
 from polls.models import Question, Choice
 
@@ -7,13 +7,12 @@ from polls.models import Question, Choice
 def index(request):
 
     latest_question_list = Question.objects.order_by('pub_date')[:5]
-    index_template = loader.get_template('polls/index.html')
-
+    polls_index_template = 'polls/index.html'
     context = {
         'latest_question_list': latest_question_list
     }
 
-    return HttpResponse(index_template.render(context, request))
+    return render(request, polls_index_template, context)
 
 
 def detail(request, question_id):
