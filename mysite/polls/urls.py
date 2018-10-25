@@ -3,7 +3,7 @@ from django.urls import path
 from polls import views
 
 
-qpp_name = 'polls'
+app_name = 'polls'
 
 urlpatterns = [
     path('', views.index, name='index'),
