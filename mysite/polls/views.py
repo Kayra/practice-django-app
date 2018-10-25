@@ -21,7 +21,7 @@ def detail(request, question_id):
     template_context = {
         'question': get_object_or_404(Question, question_id)
     }
-    
+
     return render(request, polls_detail_template, template_context)
 
 
