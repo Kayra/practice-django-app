@@ -1,5 +1,5 @@
 from django.http import HttpResponse, Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from polls.models import Question, Choice
 
@@ -18,14 +18,10 @@ def index(request):
 def detail(request, question_id):
 
     polls_detail_template = 'polls/detail.html'
-
-    try:
-        template_context = {
-            'question': Question.objects.get(pk=question_id)
-        }
-    except:
-        raise Http404('Question does not exist')
-
+    template_context = {
+        'question': get_object_or_404(Question, question_id)
+    }
+    
     return render(request, polls_detail_template, template_context)
 
 
