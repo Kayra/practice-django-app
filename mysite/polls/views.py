@@ -28,7 +28,7 @@ def detail(request, question_id):
 
 def results(request, question_id):
 
-    question = get_object_or_404(Quetion, pk=question_id)
+    question = get_object_or_404(Question, pk=question_id)
     results_template = 'polls/results.html'
     template_context = {
         'question': question
