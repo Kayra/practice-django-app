@@ -15,46 +15,17 @@ class IndexView(generic.ListView):
         """Return the last five published questions."""
         return Question.objects.order_by('-pub_date')[:5]
 
-# def index(request):
-#
-#     latest_question_list = Question.objects.order_by('pub_date')[:5]
-#     polls_index_template = 'polls/index.html'
-#     template_context = {
-#         'latest_question_list': latest_question_list
-#     }
-#
-#     return render(request, polls_index_template, template_context)
-
 
 class DetailView(generic.DetailView):
 
     model = Question
     template_name = 'polls/detail.html'
 
-# def detail(request, question_id):
-#
-#     polls_detail_template = 'polls/detail.html'
-#     template_context = {
-#         'question': get_object_or_404(Question, pk=question_id)
-#     }
-#
-#     return render(request, polls_detail_template, template_context)
-
 
 class ResultsView(generic.DetailView):
 
     model = Question
     template_name = 'polls/results.html'
-
-# def results(request, question_id):
-#
-#     question = get_object_or_404(Question, pk=question_id)
-#     results_template = 'polls/results.html'
-#     template_context = {
-#         'question': question
-#     }
-#
-#     return render(request, results_template, template_context)
 
 
 def vote(request, question_id):
