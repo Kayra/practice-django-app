@@ -1,40 +1,60 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
+from django.views import generic
 
 from polls.models import Question, Choice
 
 
-def index(request):
+class IndexView(generic.ListView):
 
-    latest_question_list = Question.objects.order_by('pub_date')[:5]
-    polls_index_template = 'polls/index.html'
-    template_context = {
-        'latest_question_list': latest_question_list
-    }
+    template_name = 'polls/index.html'
+    context_object_name = 'last_question_list'
 
-    return render(request, polls_index_template, template_context)
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Question.objects.order_by('-pub_date')[:5]
+
+# def index(request):
+#
+#     latest_question_list = Question.objects.order_by('pub_date')[:5]
+#     polls_index_template = 'polls/index.html'
+#     template_context = {
+#         'latest_question_list': latest_question_list
+#     }
+#
+#     return render(request, polls_index_template, template_context)
 
 
-def detail(request, question_id):
+class DetailView(generic.DetailView):
 
-    polls_detail_template = 'polls/detail.html'
-    template_context = {
-        'question': get_object_or_404(Question, pk=question_id)
-    }
+    model = Question
+    template_name = 'polls/detail.html'
 
-    return render(request, polls_detail_template, template_context)
+# def detail(request, question_id):
+#
+#     polls_detail_template = 'polls/detail.html'
+#     template_context = {
+#         'question': get_object_or_404(Question, pk=question_id)
+#     }
+#
+#     return render(request, polls_detail_template, template_context)
 
 
-def results(request, question_id):
+class ResultsView(generic.DetailView):
 
-    question = get_object_or_404(Question, pk=question_id)
-    results_template = 'polls/results.html'
-    template_context = {
-        'question': question
-    }
+    model = Question
+    template_name = 'polls/results.html'
 
-    return render(request, results_template, template_context)
+# def results(request, question_id):
+#
+#     question = get_object_or_404(Question, pk=question_id)
+#     results_template = 'polls/results.html'
+#     template_context = {
+#         'question': question
+#     }
+#
+#     return render(request, results_template, template_context)
 
 
 def vote(request, question_id):
