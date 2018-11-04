@@ -36,11 +36,26 @@ python mysite/manage.py runserver
 
 The application can now be accessed at [http://127.0.0.1:8000/](http://127.0.0.1:8000/polls/34/vote/)
 
+## Utility commands
+
 ### Creating an admin account
 
 ```bash
+# Source the virtual environment
+source venv/bin/activate
+
 # Create a super user
 python mysite/manage.py createsuperuser
 ```
 
 You can now use the credentials you entered to visit the [admin panel.](http://127.0.0.1:8000/admin)
+
+### Running tests
+
+```
+# Source the virtual environment
+source venv/bin/activate
+
+# Run the tests for the `polls` app
+python mysite/manage.py test polls
+```
