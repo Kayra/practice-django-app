@@ -108,6 +108,7 @@ class QuestionModelTests(TestCase):
 
         self.assertIs(future_question.was_published_recently(), False)
 
+
     def test_was_published_recently_with_recent_question(self):
 
         """
@@ -118,6 +119,7 @@ class QuestionModelTests(TestCase):
         recent_question = Question(pub_date=within_last_day)
 
         self.assertIs(recent_question.was_published_recently(), True)
+
 
     def test_was_published_recently_with_old_question(self):
 
