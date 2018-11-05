@@ -64,10 +64,20 @@ class QuestionIndexViewTests(TestCase):
 
 
     def test_past_and_future_questions(self):
+
         """
         If both past and future questions exist, only past questions are displayed on the page
         """
-        pass
+
+        create_question(question_text="Past question", days=-30)
+        create_question(question_text="Future question", days=30)
+        response = self.client.get(reverse('polls:index'))
+        
+        self.assertQuerysetEqual(
+            response.context['latest_question_list'],
+            ['<Question: Past question>']
+        )
+
 
     def test_two_questions(self):
         """
