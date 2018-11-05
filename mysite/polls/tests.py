@@ -1,9 +1,56 @@
 import datetime
 
 from django.test import TestCase
+from django.urls import reverse
 from django.utils import timezone
 
 from polls.models import Question
+
+
+def create_question(question_text, days):
+
+    """
+    Create a question with given "question_text" and offset the amount of days from now. Amount
+    of days should be positive for future date, and negative for a date in the past.
+    """
+
+    offsetted_date_to_publish = timezone.now() + datetime.timedelta(days=days)
+    question = Question.objects.create(question_text=question_text, pub_date=offsetted_date_to_publish)
+
+    return question
+
+
+class QuestionIndexViewTests(TestCase):
+
+    def test_no_questions(self):
+        """
+        If no questions exist, an appropriate message is displayed
+        """
+        pass
+
+    def test_past_question(self):
+        """
+        Questions with a pub_date in the past are displayed on the index page
+        """
+        pass
+
+    def test_future_question(self):
+        """
+        Questions with a pub_date in the future aren't displayed on the index page
+        """
+        pass
+
+    def test_past_and_future_questions(self):
+        """
+        If both past and future questions exist, only past questions are displayed on the page
+        """
+        pass
+
+    def test_two_questions(self):
+        """
+        The questions index page displays multiple questions
+        """
+        pass
 
 
 class QuestionModelTests(TestCase):
