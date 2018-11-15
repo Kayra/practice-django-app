@@ -2,6 +2,10 @@
 
 This is the code written while following the [official Django tutorial](https://docs.djangoproject.com/en/2.1/intro/tutorial01/).
 
+**Python version: 3.7.0**
+
+**Django version: 2.1.2**
+
 ## Set up
 
 ### Mac installation instructions
