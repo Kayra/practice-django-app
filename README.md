@@ -42,6 +42,16 @@ The application can now be accessed at [http://127.0.0.1:8000/](http://127.0.0.1
 
 ## Utility commands
 
+### Interactive shell with Django context
+
+```bash
+# Source the virtual environment
+source venv/bin/activate
+
+# Start the interactive shell
+python mysite/manage.py shell
+```
+
 ### Creating an admin account
 
 ```bash
